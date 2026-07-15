@@ -1,25 +1,31 @@
-<!DOCTYPE html>
-<html>
+<h1>📚 BookShelf</h1>
 
-<head>
-    <title>BookShelf</title>
-</head>
+<a href="{{ route('livros.create') }}">
+    Novo Livro
+</a>
 
-<body>
+<hr>
 
-    <h1>📚 BookShelf</h1>
+@forelse($livros as $livro)
 
-    <p>Lista de livros</p>
+    <p>
 
-    <ul>
-        @foreach($livros as $livro)
-            <li>
-                {{ $livro['titulo'] }}
-                -
-                {{ $livro['autor'] }}
-            </li>
-        @endforeach
-    </ul>
-</body>
+        <strong>{{ $livro->titulo }}</strong>
 
-</html>
+        <br>
+
+        {{ $livro->autor }}
+
+        <br>
+
+        {{ $livro->ano }}
+
+    </p>
+
+    <hr>
+
+@empty
+
+    <p>Nenhum livro cadastrado.</p>
+
+@endforelse

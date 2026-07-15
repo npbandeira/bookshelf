@@ -22,7 +22,7 @@ class LivroController extends Controller
      */
     public function create()
     {
-        //
+        return view('livros.create');
     }
 
     /**
@@ -30,9 +30,14 @@ class LivroController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        Livro::create([
+            'titulo' => $request->titulo,
+            'autor' => $request->autor,
+            'ano' => $request->ano,
+        ]);
 
+        return redirect()->route('livros.index');
+    }
     /**
      * Display the specified resource.
      */
