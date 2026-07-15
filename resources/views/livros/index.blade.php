@@ -20,6 +20,12 @@
 
         {{ $livro->ano }}
 
+        <br><br>
+
+        <a href="{{ route('livros.edit', $livro) }}">
+            Editar
+        </a>
+
     </p>
 
     <hr>

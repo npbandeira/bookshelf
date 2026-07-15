@@ -48,15 +48,17 @@ class LivroController extends Controller
      */
     public function edit(Livro $livro)
     {
-        //
+        return view('livros.edit', compact('livro'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Livro $livro)
+    public function update(LivroRequest $request, Livro $livro)
     {
-        //
+        $livro->update($request->validated());
+
+        return redirect()->route('livros.index');
     }
 
     /**
