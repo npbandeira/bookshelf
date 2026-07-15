@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LivroRequest;
 use App\Models\Livro;
 use Illuminate\Http\Request;
 
@@ -28,13 +29,9 @@ class LivroController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(LivroRequest $request)
     {
-        Livro::create([
-            'titulo' => $request->titulo,
-            'autor' => $request->autor,
-            'ano' => $request->ano,
-        ]);
+        Livro::create($request->validated());
 
         return redirect()->route('livros.index');
     }
