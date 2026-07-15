@@ -25,7 +25,19 @@
         <a href="{{ route('livros.edit', $livro) }}">
             Editar
         </a>
+    <form action="{{ route('livros.destroy', $livro) }}" method="POST">
 
+        @csrf
+
+        @method('DELETE')
+
+        <button>
+
+            Excluir
+
+        </button>
+
+    </form>
     </p>
 
     <hr>
