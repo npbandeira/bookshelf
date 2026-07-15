@@ -12,7 +12,9 @@ class LivroController extends Controller
      */
     public function index()
     {
-        return view('livros.index');
+        $livros = Livro::all();
+
+        return view('livros.index', compact('livros'));
     }
 
     /**
