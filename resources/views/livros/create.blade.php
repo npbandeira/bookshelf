@@ -1,64 +1,96 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.app')
 
-<head>
-    <title>Novo Livro</title>
-</head>
+@section('content')
 
-<body>
+<div class="max-w-2xl mx-auto">
 
-    <h1>Novo Livro</h1>
+    <div class="bg-white shadow-lg rounded-lg p-8">
 
-    <form action="{{ route('livros.store') }}" method="POST">
+        <h2 class="text-3xl font-bold mb-6">
+            📚 Novo Livro
+        </h2>
 
-        @csrf
+        <form action="{{ route('livros.store') }}" method="POST">
 
-        <div>
-            <label>Título</label>
+            @csrf
 
-            <input type="text" name="titulo" value="{{ old('titulo') }}">
-        </div>
-        @error('titulo')
-            <span style="color:red">
-                {{ $message }}
-            </span>
-        @enderror
+            <div class="mb-5">
+                <label class="block mb-2 font-semibold">
+                    Título
+                </label>
 
-        <br>
+                <input
+                    type="text"
+                    name="titulo"
+                    value="{{ old('titulo') }}"
+                    class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500">
 
-        <div>
-            <label>Autor</label>
+                @error('titulo')
+                    <p class="text-red-500 text-sm mt-1">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
 
-            <input type="text" name="autor" value="{{ old('autor')}}">
-        </div>
-        @error('autor')
-            <span style="color:red">
-                {{ $message }}
-            </span>
-        @enderror
+            <div class="mb-5">
+                <label class="block mb-2 font-semibold">
+                    Autor
+                </label>
 
-        <br>
+                <input
+                    type="text"
+                    name="autor"
+                    value="{{ old('autor') }}"
+                    class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500">
 
-        <div>
-            <label>Ano</label>
+                @error('autor')
+                    <p class="text-red-500 text-sm mt-1">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
 
-            <input type=" number" name="ano" value="{{ old(key: 'ano')}}">
-            @error('ano')
-                <span style="color:red">
-                    {{ $message }}
-                </span>
-            @enderror
+            <div class="mb-6">
+                <label class="block mb-2 font-semibold">
+                    Ano
+                </label>
 
-        </div>
+                <input
+                    type="number"
+                    name="ano"
+                    value="{{ old('ano') }}"
+                    class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500">
 
-        <br>
+                @error('ano')
+                    <p class="text-red-500 text-sm mt-1">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
 
-        <button type="submit">
-            Salvar
-        </button>
+            <div class="flex gap-3">
 
-    </form>
+                <button
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg">
 
-</body>
+                    Salvar
 
-</html>
+                </button>
+
+                <a
+                    href="{{ route('livros.index') }}"
+                    class="bg-gray-300 hover:bg-gray-400 px-5 py-2 rounded-lg">
+
+                    Cancelar
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+@endsection
